@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Assignment, Driver } from '../models/models';
 
-const BASE = 'http://localhost:8000/api';
+const BASE = '/api';
 
 @Injectable({ providedIn: 'root' })
 export class LogisticsService {

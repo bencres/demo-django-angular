@@ -1,0 +1,40 @@
+/* Global styles */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Dashboard layout */
+.dashboard-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.assignments-table {
+  width: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+
+.driver-select {
+  width: 180px;
+}
+
+/* Status chip colors */
+.status-pending {
+  background-color: #fff3e0 !important;
+  color: #e65100 !important;
+}
+
+.status-in_progress {
+  background-color: #e3f2fd !important;
+  color: #0d47a1 !important;
+}
+
+.status-completed {
+  background-color: #e8f5e9 !important;
+  color: #1b5e20 !important;
+}

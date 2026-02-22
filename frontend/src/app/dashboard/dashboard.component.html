@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <h1>Driver Assignments</h1>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+
+  <mat-table *ngIf="!loading" [dataSource]="assignments" class="assignments-table">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+
+    <!-- Start Location Column -->
+    <ng-container matColumnDef="start_location">
+      <mat-header-cell *matHeaderCellDef>From</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.start_location }}</mat-cell>
+    </ng-container>
+
+    <!-- End Location Column -->
+    <ng-container matColumnDef="end_location">
+      <mat-header-cell *matHeaderCellDef>To</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.end_location }}</mat-cell>
+    </ng-container>
+
+    <!-- Distance Column -->
+    <ng-container matColumnDef="distance">
+      <mat-header-cell *matHeaderCellDef>Distance (mi)</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.distance }}</mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-chip-listbox>
+          <mat-chip [ngClass]="'status-' + row.status">
+            {{ statusLabel(row.status) }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Driver Column -->
+    <ng-container matColumnDef="driver">
+      <mat-header-cell *matHeaderCellDef>Assigned Driver</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field appearance="outline" class="driver-select">
+          <mat-select
+            [ngModel]="row.assigned_driver_id"
+            (ngModelChange)="onDriverSelected(row.id, $event)"
+            placeholder="Unassigned">
+            <mat-option [value]="null">— Unassigned —</mat-option>
+            <mat-option
+              *ngFor="let d of drivers"
+              [value]="d.id"
+              [disabled]="d.current_assignment !== null && d.current_assignment !== row.id">
+              {{ d.first_name }} {{ d.last_name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

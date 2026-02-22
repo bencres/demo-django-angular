@@ -2,6 +2,10 @@
 
 A tiny transportation logistics demo with a Django REST API and an Angular Material dashboard for managing driver assignments.
 
+## Video
+
+https://github.com/user-attachments/assets/b7780408-00c4-4f36-b322-5cab7fe71fc5
+
 ## Features
 
 - Assignment table — lists routes with start/end location, distance, and status

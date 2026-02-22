@@ -18,6 +18,15 @@ https://github.com/user-attachments/assets/b7780408-00c4-4f36-b322-5cab7fe71fc5
 ## Stack
 Django, Django REST Framework, Angular, and SQLite
 
+## Running with Docker
+
+```bash
+docker compose up --build
+```
+Open http://localhost:4200. To stop and remove data: `docker compose down -v`
+
+
+
 ## Running locally
 
 Backend:
